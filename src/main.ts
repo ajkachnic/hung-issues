@@ -46,6 +46,9 @@ const main = async () => {
       issue: issue.updated_at
     })
   })
-  console.log(old.length)
+  console.log(`There are ${old.length} hung issues. Here they are:`)
+  old.forEach(i => {
+    console.log(`#${i.number} ${i.title}`)
+  })
 }
 main()

@@ -44,7 +44,6 @@ export class GitHubRepo {
       let issues: Issue[] = []
       for(;;) {
         const issuePage = await this.issuePage(page)
-        console.log(issuePage)
         if(issuePage.length === 0) break
         issues = [...issues, ...issuePage]
         page++
