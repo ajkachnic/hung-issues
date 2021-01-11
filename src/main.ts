@@ -1,4 +1,5 @@
 import inquirer from 'inquirer'
+import chalk from 'chalk'
 
 import { checkDate } from './check'
 import { GitHubRepo} from './github'
@@ -48,7 +49,7 @@ const main = async () => {
   })
   console.log(`There are ${old.length} hung issues. Here they are:`)
   old.forEach(i => {
-    console.log(`#${i.number} ${i.title}`)
+    console.log(`${chalk.red(`#${i.number}`)} ${i.title}`)
   })
 }
 main()
