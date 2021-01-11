@@ -1,0 +1,24 @@
+{
+  "name": "hung-issues",
+  "version": "0.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "ts-node src/main.ts"
+  },
+  "keywords": [],
+  "author": "Andrew Kachnic <ajkachnic@protonmail.com> (https://andrewkachnic.now.sh)",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/inquirer": "^7.3.1",
+    "@types/node": "^14.14.20",
+    "@types/node-fetch": "^2.5.7",
+    "ts-node": "^9.1.1",
+    "typescript": "^4.1.3"
+  },
+  "dependencies": {
+    "dayjs": "^1.10.3",
+    "inquirer": "^7.3.3",
+    "node-fetch": "^2.6.1"
+  }
+}
