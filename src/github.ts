@@ -27,7 +27,7 @@ export class GitHubRepo {
 
   private async issuePage(page: number): Promise<Issue[]> {
     const url = `https://api.github.com/repos/${this.owner}/${this.repo}/issues?page=${page}&state=open&per_page=100`
-    
+
     const res = await fetch(url)
     const body = await res.json()
     const issues = body as Issue[]
@@ -37,14 +37,15 @@ export class GitHubRepo {
   async issues(): Promise<Issue[]> {
     const file = `${this.owner}-${this.repo}.json`
     try {
-      await fs.stat(file)
-      return JSON.parse((await fs.readFile('issues.json')).toString()) as Issue[]
-    } catch {
+      const stat = await fs.stat(file)
+      if (!stat.isFile()) throw new Error('no cache')
+      return JSON.parse((await fs.readFile(file)).toString()) as Issue[]
+    } catch (err) {
       let page = 1
       let issues: Issue[] = []
-      for(;;) {
+      for (; ;) {
         const issuePage = await this.issuePage(page)
-        if(issuePage.length === 0) break
+        if (issuePage.length === 0) break
         issues = [...issues, ...issuePage]
         page++
       }
